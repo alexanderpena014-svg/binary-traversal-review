@@ -233,7 +233,12 @@ public class TraversalReview {
      */
     public static boolean hasNonDivisible(TreeNode node, int k) {
         if (node == null) return false;
-        return false;
+
+        if (node.data % k != 0) {
+            return true;
+        }
+
+        return hasNonDivisible(node.left, k) || hasNonDivisible(node.right, k);
     }
 
     /**
@@ -260,6 +265,7 @@ public class TraversalReview {
      */
     public static String concatenate(TreeNode node) {
         if (node == null) return "";
-        return "";
+
+        return concatenate(node.left) + node.data + concatenate(node.right);
     }
 }
